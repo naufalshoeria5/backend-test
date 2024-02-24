@@ -1,6 +1,7 @@
 package com.bni.test.backendfitness.modules.users.entity;
 
-import com.bni.test.backendfitness.base.baseEnum.EStatus;
+import com.bni.test.backendfitness.base.baseenum.EStatus;
+import com.bni.test.backendfitness.modules.subscription.entity.Subscription;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -9,9 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -49,6 +49,11 @@ public class User {
 
     private String otpCode;
 
+    private LocalDateTime otpExpiredAt;
+
     @Enumerated(EnumType.STRING)
     private EStatus status;
+
+    @OneToMany(mappedBy = "user")
+    private List<Subscription> subscription;
 }

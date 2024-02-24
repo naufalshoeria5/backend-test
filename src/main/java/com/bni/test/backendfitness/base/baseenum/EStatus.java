@@ -1,4 +1,4 @@
-package com.bni.test.backendfitness.base.baseEnum;
+package com.bni.test.backendfitness.base.baseenum;
 
 public enum EStatus {
     REGISTERED,

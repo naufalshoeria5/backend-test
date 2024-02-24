@@ -5,14 +5,14 @@ import com.bni.test.backendfitness.helpers.WebResponse;
 import com.bni.test.backendfitness.modules.auth.dto.*;
 import com.bni.test.backendfitness.modules.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import javax.print.attribute.standard.Media;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
+@Slf4j
 public class AuthController {
 
     private final AuthService authService;
@@ -24,6 +24,19 @@ public class AuthController {
     )
     public WebResponse<String> register(@RequestBody RegisterUserRequest registerUserRequest) throws Exception {
         authService.register(registerUserRequest);
+
+        return WebResponse.<String>builder()
+                .data("OK")
+                .build();
+    }
+
+    @PostMapping(
+            path = "/send-otp-register",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public WebResponse<String> sendOtpRegister(@RequestParam("email") String email){
+        log.info("otp");
+        authService.otpRegister(email);
 
         return WebResponse.<String>builder()
                 .data("OK")

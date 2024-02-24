@@ -13,7 +13,10 @@ public class WebResponse<T> {
     private T data;
     private String errors;
 
-    /*TODO
-    TAMBAHKAN PAGING
-     */
+    public static WebResponse<Object> setValidateRequest(Object data, String message) {
+        return WebResponse.builder()
+                .errors(message)
+                .data(data)
+                .build();
+    }
 }
