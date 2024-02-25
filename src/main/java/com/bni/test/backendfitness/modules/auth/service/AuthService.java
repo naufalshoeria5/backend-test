@@ -114,15 +114,11 @@ public class AuthService {
 
     @Transactional(readOnly = true)
     public CheckEmailResponse checkEmail(String email){
-        Optional<User> user = userRepository.findFirstByEmail(email);
+        User user = userRepository.findFirstByEmail(email).orElse(null);
         CheckEmailResponse checkEmailResponse = new CheckEmailResponse();
         checkEmailResponse.setEmail(email);
 
-        if (user.isPresent()){
-            checkEmailResponse.setStatus(user.get().getStatus().toString());
-        }else{
-            checkEmailResponse.setStatus(EStatus.UNREGISTERED.toString());
-        }
+        checkEmailResponse.setStatus(user != null ? user.getStatus().toString() : EStatus.UNREGISTERED.toString());
 
         return checkEmailResponse;
     }

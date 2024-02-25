@@ -1,13 +1,19 @@
 package com.bni.test.backendfitness.modules.subscription.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateSubscriptionRequest {
+@Builder
+public class SubscriptionPaymentResponse {
 
-    private String menuId;
+    private String menuName;
+
+    private Long totalPayment;
+
+    private String paymentCode;
 }

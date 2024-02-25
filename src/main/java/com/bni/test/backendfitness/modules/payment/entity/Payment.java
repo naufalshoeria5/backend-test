@@ -23,11 +23,11 @@ public class Payment {
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
     private Subscription subscription;
 
-    private String method;
-
     private LocalDate date;
 
     private String otpCode;
+
+    private String paymentCode;
 
     private LocalDateTime expiredOtp;
 

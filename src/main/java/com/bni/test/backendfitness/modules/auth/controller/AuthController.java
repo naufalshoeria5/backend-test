@@ -35,7 +35,6 @@ public class AuthController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public WebResponse<String> sendOtpRegister(@RequestParam("email") String email){
-        log.info("otp");
         authService.otpRegister(email);
 
         return WebResponse.<String>builder()
@@ -57,10 +56,10 @@ public class AuthController {
     }
 
     @GetMapping(
-            path = "/check/{email}",
+            path = "/check-email",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public WebResponse<CheckEmailResponse> checkEmail(@PathVariable String email) {
+    public WebResponse<CheckEmailResponse> checkEmail(@RequestParam(name = "email") String email) {
         CheckEmailResponse checkEmailResponse = authService.checkEmail(email);
 
         return WebResponse.<CheckEmailResponse>builder()

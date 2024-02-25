@@ -4,7 +4,6 @@ import com.bni.test.backendfitness.security.jwt.AuthEntryPointJwt;
 import com.bni.test.backendfitness.security.jwt.AuthTokenFilter;
 import com.bni.test.backendfitness.security.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

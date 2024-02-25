@@ -2,6 +2,7 @@ package com.bni.test.backendfitness.modules.subscription.controller;
 
 import com.bni.test.backendfitness.helpers.WebResponse;
 import com.bni.test.backendfitness.modules.subscription.dto.CreateSubscriptionRequest;
+import com.bni.test.backendfitness.modules.subscription.dto.SubscriptionPaymentResponse;
 import com.bni.test.backendfitness.modules.subscription.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -27,7 +28,9 @@ public class SubscriptionController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public void create(@RequestBody CreateSubscriptionRequest request){
-        subscriptionService.createData(request);
+    public WebResponse<SubscriptionPaymentResponse> create(@RequestBody CreateSubscriptionRequest request){
+        SubscriptionPaymentResponse data = subscriptionService.createData(request);
+
+        return WebResponse.<SubscriptionPaymentResponse>builder().data(data).build();
     }
 }

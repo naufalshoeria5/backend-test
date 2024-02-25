@@ -11,5 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PaymentVerificationRequest {
 
-    private String id;
+    private String otpCode;
+
+    private String paymentCode;
 }
